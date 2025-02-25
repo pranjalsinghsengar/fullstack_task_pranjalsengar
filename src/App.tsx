@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TaskForm } from "./components/TaskForm";
 import { TaskList } from "./components/TaskList";
 import { useSocket } from "./hooks/useSocket";
@@ -11,6 +11,10 @@ function App() {
   const [editTask, setEditTask] = useState<string>("");
   const { taskList, setTaskList, fetchTasks } = useTasks();
   const socket = useSocket(setTaskList, (error) => alert(error));
+
+  useEffect(()=>{
+    fetchTasks()
+  },[])
 
   const addTask = (e: React.FormEvent) => {
     e.preventDefault();
