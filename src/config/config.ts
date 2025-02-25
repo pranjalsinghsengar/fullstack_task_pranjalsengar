@@ -1,0 +1,1 @@
+export const API_URL = "https://full-stack-kazam-server.onrender.com"
